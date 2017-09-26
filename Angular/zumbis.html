@@ -1,0 +1,57 @@
+<div class='container'>
+    <div class='well'>
+        <h1>
+            Ocorrências de Zumbis
+        </h1>
+        <img src="image/Deadpool_(Zumbi).png" width="14%">
+    </div>
+    <table class="table" ng-if='ocorrencias.length > 0'>
+        <thead>
+            <th>
+                Cep
+            </th>
+            <th>
+                Bairro
+            </th>
+            <th>
+                Número
+            </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ocorrencia in ocorrencias">
+                <td>
+                    {{ocorrencia.cep}}
+                </td>
+                <td>
+                    {{ocorrencia.bairro | upper}}
+                </td>
+                <td>
+                    {{ocorrencia.numero}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <form name="formzumbi" novalidate>
+            <div class="form-group">
+                <label>
+                        Cep:
+                </label>
+                <input ng-blur ng-model="ocorrencia.cep" required ng-cep-validator type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>
+                        Bairro:
+                </label>
+                <input ng-blur ng-model="ocorrencia.bairro" required ng-minlength="4" type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>
+                        Número de Ocorrências: 
+                </label>
+                <input ng-blur ng-model="ocorrencia.numero" required type="text" class="form-control" />
+            </div>
+            <ng-zumbi-submit submit="adicionar(ocorrencia)"></ng-zumbi-submit>
+        </form>
+    </div>
+</div>
